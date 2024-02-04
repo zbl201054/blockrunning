@@ -1,0 +1,5 @@
+    方块跑酷发布！！！
+    此为本游戏python版本，编程猫kitten版请参见https://shequ.codemao.cn/work/197978002
+    版本说明：
+        v1.0.0alpha 添加登录界面
+    本项目仅用于学习和使用，请勿抄袭！！！
