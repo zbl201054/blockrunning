@@ -5,3 +5,5 @@
     本项目仅用于学习和使用，请勿抄袭！！！
 *注：*
 *此游戏需安装最新版pgzero库和python3.8以上版本*
+    *pgzero安装说明：*
+    *打开cmd或终端，输入pip install pgzero即可*
