@@ -1,3 +1,5 @@
+#方块跑酷python版
+#功能还未完善敬请谅解！
 import time
 from pgzrun import *
 HEIGHT = 500
@@ -21,6 +23,24 @@ dl1 = Actor("dl.png",(450,320))
 dl2=""
 q=""
 bbh=Actor("版本.png",(800,30))
+ks=Actor("开始.png",(710,100))
+project=Actor("project0.png",(440,250))
+music_button=Actor("music-button.png",(100,320))
+notice=Actor("公告.png",(710,250))
+store=Actor("store.png",(440,400))
+settings=Actor("sz.png",(50,200))
+user_center=Actor("user-center.png",(710,350))
+activity=Actor("hd.png",(80,400))
+dz=Actor("dz.png",(440,350))
+a=0
+b=0
+c=0
+d=0
+e=0
+f=0
+g=0
+fh=Actor("fh.png")
+fh1=0
 def draw():
     global m
     screen.clear()
@@ -42,7 +62,29 @@ def draw():
     if m=="主屏幕":
         fk1.draw()
         bbh.draw()
-
+        ks.draw()
+        project.draw()
+        music_button.draw()
+        notice.draw()
+        store.draw()
+        settings.draw()
+        user_center.draw()
+        activity.draw()
+        dz.draw()
+    if m=="游戏模式":
+        fh.draw()
+    if m=="公告":
+        fh.draw()
+    if m=="个人中心":
+        fh.draw()
+    if m=="商店":
+        fh.draw()
+    if m=="音乐":
+        fh.draw()
+    if m=="活动":
+        fh.draw()
+    if m=="设置":
+        fh.draw()
 def new0():
     global m
     m = '加载'
@@ -53,6 +95,27 @@ def new1():
 def new2():
     global m,q
     m="登录界面"
+def new3():
+    global m
+    m="游戏模式"
+def new4():
+    global m
+    m="公告"
+def new5():
+    global m
+    m="个人中心"
+def new6():
+    global m
+    m="商店"
+def new7():
+    global m
+    m="音乐"
+def new8():
+    global m
+    m="活动"
+def new9():
+    global m
+    m="设置"
 def jd0():
     global i #全局变量
     if i < 6:
@@ -60,8 +123,11 @@ def jd0():
 def dl0():
     global m
     m="主屏幕"
+
 def update():
-    global m, i,dl2
+    global m, i,dl2,fh1,a,b,c,d,e,f,g
+    if fh1==1:
+        clock.schedule(dl0,1)
     if (m == '开始'):
         clock.schedule(new0,3.0)
     if (m == '加载'):
@@ -74,9 +140,40 @@ def update():
     if m=="登录界面":
         if dl2=="成功":
             clock.schedule(dl0,1)
-
+    if m=="主屏幕":
+        fh1=0
+        if a==1:
+            clock.schedule(new3,1)
+        if b==1:
+           clock.schedule(new4,1)
+        if c==1:
+            clock.schedule(new5,1)
+        if d==1:
+            clock.schedule(new6,1)
+        if e==1:
+            clock.schedule(new7,1)
+        if f==1:
+            clock.schedule(new8,1)
+        if g==1:
+            clock.schedule(new9,1)
+    if m=="游戏模式":
+        a=0
+    if m=="公告":
+        b=0
+    if m=="个人中心":
+        c=0
+    if m=="商店":
+        d=0
+    if m=="音乐":
+        e=0
+    if m=="活动":
+        f=0
+    if m=="设置":
+        g=0
 def on_mouse_down(pos):
-    global m,f0,f1,f2,f3,dl2,dl1,q
+    global m,f0,f1,f2,f3,dl2,dl1,q,a,b,c,d,e,f,fh1,g
+    if fh.collidepoint(pos):
+        fh1=1
     if m=="登录":
         q="dljm"
     if m=="登录界面":
@@ -103,5 +200,19 @@ def on_mouse_down(pos):
             m="登录界面"
             f2.close()
             f3.close()
-
+    if m=="主屏幕":
+        if ks.collidepoint(pos):
+            a=1
+        if notice.collidepoint(pos):
+            b=1
+        if user_center.collidepoint(pos):
+            c=1
+        if store.collidepoint(pos):
+            d=1
+        if music_button.collidepoint(pos):
+            e=1
+        if activity.collidepoint(pos):
+            f=1
+        if settings.collidepoint(pos):
+            g=1
 go()
