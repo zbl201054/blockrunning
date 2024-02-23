@@ -47,8 +47,12 @@ k=0
 color=0
 floor=Actor("black_block.png",(445,500))
 project_1=Actor("project0.png",(100,200))
+noticekj=Actor("公告框架.png",(445,250))
+noticebutton1=Actor("beta版公测.png",(215,130))
+noticenr1=Actor("公测内容.png",(560,247))
+j=0
 def draw():
-    global m
+    global m,j
     screen.clear()
     bg.draw()
     if (m == '开始'):
@@ -83,6 +87,10 @@ def draw():
         zy.draw()
     if m=="公告":
         fh.draw()
+        noticekj.draw()
+        noticebutton1.draw()
+        if j==1:
+            noticenr1.draw()
     if m=="个人中心":
         fh.draw()
     if m=="商店":
@@ -202,7 +210,7 @@ def update():
         if project_1.y>=465:
             project_1.y-=5
 def on_mouse_down(pos):
-    global m,f0,f1,f2,f3,dl2,dl1,q,a,b,c,d,e,f,fh1,g,k
+    global m,f0,f1,f2,f3,dl2,dl1,q,a,b,c,d,e,f,fh1,g,k,j
     if fh.collidepoint(pos):
         fh1=1
     if m=="登录":
@@ -246,6 +254,9 @@ def on_mouse_down(pos):
             f=1
         if settings.collidepoint(pos):
             g=1
+    if m=="公告":
+        if noticebutton1.collidepoint(pos):
+            j=1
     if m=="游戏模式":
         if zy.collidepoint(pos):
             k=1    
